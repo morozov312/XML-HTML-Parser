@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<university>
+    <faculty name="АВТФ">
+        <course number="3">
+            <group id="АВТ-888">
+                <student initials="Андреев Андрей">
+                    <subject name="Метрология">1</subject>
+                    <subject name="ООП">2</subject>
+                    <subject name="Архитектура вычислительных систем">0</subject>
+                    <subject name="Теория массовго обслуживания">1</subject>
+                    <subject name="Экономика">2</subject>
+                    <subject name="Базы данных">0</subject>
+                    <subject name="Физическая культура">1</subject>
+                </student>
+                <student initials="Александров Александр">
+                    <subject name="Метрология">2</subject>
+                    <subject name="ООП">2</subject>
+                    <subject name="Архитектура вычислительных систем">1</subject>
+                    <subject name="Теория массовго обслуживания">1</subject>
+                    <subject name="Экономика">2</subject>
+                    <subject name="Базы данных">1</subject>
+                    <subject name="Физическая культура">0</subject>
+                </student>
+            </group>
+            <group id="АВТ-123">
+                <student initials="Сергеев Сергей">
+                    <subject name="Метрология">1</subject>
+                    <subject name="ООП">2</subject>
+                    <subject name="Архитектура вычислительных систем">1</subject>
+                    <subject name="Теория массовго обслуживания">1</subject>
+                    <subject name="Экономика">2</subject>
+                    <subject name="Базы данных">1</subject>
+                    <subject name="Физическая культура">2</subject>
+                </student>
+            </group>
+        </course>
+        <course number="1">
+            <group id="АВТ-001">
+                <student initials="Романов Роман">
+                    <subject name="Программирование">1</subject>
+                    <subject name="Право">1</subject>
+                    <subject name="История">1</subject>
+                    <subject name="Физика">1</subject>
+                    <subject name="Линейная алгебра и геометрия">1</subject>
+                    <subject name="ТРПО">1</subject>
+                    <subject name="Английский язык">1</subject>
+                    <subject name="Дискретная математика">1</subject>
+                </student>
+            </group>
+            <group id="АВТ-333">
+                <student initials="Павлов Павел">
+                    <subject name="Программирование">2</subject>
+                    <subject name="Право">1</subject>
+                    <subject name="История">1</subject>
+                    <subject name="Физика">2</subject>
+                    <subject name="Линейная алгебра и геометрия">1</subject>
+                    <subject name="ТРПО">1</subject>
+                    <subject name="Английский язык">1</subject>
+                    <subject name="Дискретная математика">2</subject>
+                </student>
+            </group>
+        </course>
+    </faculty>
+    <faculty name="ИВТ">
+        <course number="3">
+            <group id="ИП-817">
+                <student initials="Иванов Иван">
+                    <subject name="Метрология">2</subject>
+                    <subject name="ООП">2</subject>
+                    <subject name="Архитектура вычислительных систем">2</subject>
+                    <subject name="Теория массовго обслуживания">2</subject>
+                    <subject name="Экономика">2</subject>
+                    <subject name="Базы данных">2</subject>
+                    <subject name="Физическая культура">2</subject>
+                </student>
+                <student initials="Прохоров Прохор">
+                    <subject name="Метрология">1</subject>
+                    <subject name="ООП">2</subject>
+                    <subject name="Архитектура вычислительных систем">2</subject>
+                    <subject name="Теория массовго обслуживания">2</subject>
+                    <subject name="Экономика">1</subject>
+                    <subject name="Базы данных">2</subject>
+                    <subject name="Физическая культура">2</subject>
+                </student>
+            </group>
+        </course>
+        <course number="2">
+            <group id="ИП-900">
+                <student initials="Алексеев Алексей">
+                    <subject name="Интернет технологии">0</subject>
+                    <subject name="Математический анализ">0</subject>
+                    <subject name="Мат. лог. и теория алгоритмов">0</subject>
+                    <subject name="Электротехника и схемотехника">0</subject>
+                    <subject name="Структуры и алгоритмы обработки данных">0</subject>
+                    <subject name="Легкая атлетика">0</subject>
+                </student>
+            </group>
+            <group id="ИП-942">
+                <student initials="Дмитриев Дмитрий">
+                    <subject name="Интернет технологии">2</subject>
+                    <subject name="Математический анализ">2</subject>
+                    <subject name="Мат. лог. и теория алгоритмов">2</subject>
+                    <subject name="Электротехника и схемотехника">2</subject>
+                    <subject name="Структуры и алгоритмы обработки данных">1</subject>
+                    <subject name="Легкая атлетика">1</subject>
+                </student>
+            </group>
+        </course>
+    </faculty>
+</university>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб 3.3</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="select_list">
+            <form>
+                <label>Факультет:
+                    <select id="faculty">
+                        <option value="placeholder" disabled="true" selected="true" hidden="true">
+                            Выберите факультет
+                        </option>
+                    </select>
+                </label>
+                <label>Курс:
+                    <select id="course">
+                        <option value="placeholder" disabled="true" selected hidden="true">Выберите курс</option>
+                    </select>
+                </label>
+                <label>Группа:
+                    <select id="group">
+                        <option value="" disabled selected hidden>Выберите группу</option>
+                    </select>
+                </label>
+                <label>ФИО:
+                    <select id="initials">
+                        <option value="" disabled selected hidden>Выберите студента</option>
+                    </select>
+                </label>
+            </form>
+        </div>
+
+        <div class="subject_table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Предмет</th>
+                        <th class="table__center">0</th>
+                        <th class="table__center">1</th>
+                        <th class="table__center">2</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div> <!-- ./sublectTable -->
+        <div id="marks_result"></div>
+        <div class="buttons">
+            <button id="done">Выполнить</button>
+            <button id="undo">Отменить</button>
+        </div>
+    </div> <!-- ./wrapper -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
