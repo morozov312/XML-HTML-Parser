@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="eng">
 
 <head>
     <meta charset="UTF-8">
-    <title>Лаб 3.3</title>
+    <title>Parser</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -11,26 +11,26 @@
     <div class="wrapper">
         <div class="select_list">
             <form>
-                <label>Факультет:
+                <label>Faculty:
                     <select id="faculty">
                         <option value="placeholder" disabled="true" selected="true" hidden="true">
-                            Выберите факультет
+                            Choose a faculty
                         </option>
                     </select>
                 </label>
-                <label>Курс:
+                <label>Course:
                     <select id="course">
-                        <option value="placeholder" disabled="true" selected hidden="true">Выберите курс</option>
+                        <option value="placeholder" disabled="true" selected hidden="true">Choose a course</option>
                     </select>
                 </label>
-                <label>Группа:
+                <label>Group:
                     <select id="group">
-                        <option value="" disabled selected hidden>Выберите группу</option>
+                        <option value="placeholder" disabled selected hidden>Choose a group</option>
                     </select>
                 </label>
-                <label>ФИО:
+                <label>Name:
                     <select id="initials">
-                        <option value="" disabled selected hidden>Выберите студента</option>
+                        <option value="placeholder" disabled selected hidden>Choose a student</option>
                     </select>
                 </label>
             </form>
@@ -40,7 +40,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Предмет</th>
+                        <th>Subject</th>
                         <th class="table__center">0</th>
                         <th class="table__center">1</th>
                         <th class="table__center">2</th>
@@ -52,8 +52,8 @@
         </div> <!-- ./sublectTable -->
         <div id="marks_result"></div>
         <div class="buttons">
-            <button id="done">Выполнить</button>
-            <button id="undo">Отменить</button>
+            <button id="done">Сalculate</button>
+            <button id="undo">Cancel</button>
         </div>
     </div> <!-- ./wrapper -->
     <script type="module" src="./js/app.js"></script>

@@ -1,108 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <university>
-    <faculty name="АВТФ">
+    <faculty name="AVTF">
         <course number="3">
-            <group id="АВТ-888">
-                <student initials="Андреев Андрей">
-                    <subject name="Метрология">1</subject>
-                    <subject name="ООП">2</subject>
-                    <subject name="Архитектура вычислительных систем">0</subject>
-                    <subject name="Теория массовго обслуживания">1</subject>
-                    <subject name="Экономика">2</subject>
-                    <subject name="Базы данных">0</subject>
-                    <subject name="Физическая культура">1</subject>
+            <group id="AVT-888">
+                <student initials="Andreev Anrey">
+                    <subject name="Metrology">1</subject>
+                    <subject name="OOP">2</subject>
+                    <subject name="Computing Systems Architecture">0</subject>
+                    <subject name="Queuing Theory">1</subject>
+                    <subject name="Economy">2</subject>
+                    <subject name="Databases">0</subject>
+                    <subject name="Physical Education">1</subject>
                 </student>
-                <student initials="Александров Александр">
-                    <subject name="Метрология">2</subject>
-                    <subject name="ООП">2</subject>
-                    <subject name="Архитектура вычислительных систем">1</subject>
-                    <subject name="Теория массовго обслуживания">1</subject>
-                    <subject name="Экономика">2</subject>
-                    <subject name="Базы данных">1</subject>
-                    <subject name="Физическая культура">0</subject>
+                <student initials="Alexandrov Alexander">
+                    <subject name = "Metrology">2</subject>
+                    <subject name = "OOP">2</subject>
+                    <subject name = "Computing Systems Architecture">1</subject>
+                    <subject name = "Queuing Theory">1</subject>
+                    <subject name = "Economy">2</subject>
+                    <subject name = "Databases">1</subject>
+                    <subject name = "Physical Education">0</subject>
                 </student>
             </group>
-            <group id="АВТ-123">
-                <student initials="Сергеев Сергей">
-                    <subject name="Метрология">1</subject>
-                    <subject name="ООП">2</subject>
-                    <subject name="Архитектура вычислительных систем">1</subject>
-                    <subject name="Теория массовго обслуживания">1</subject>
-                    <subject name="Экономика">2</subject>
-                    <subject name="Базы данных">1</subject>
-                    <subject name="Физическая культура">2</subject>
+            <group id="AVT-123">
+                <student initials = "Sergeev Sergey">
+                    <subject name = "Metrology">1</subject>
+                    <subject name = "OOP">2</subject>
+                    <subject name = "Computing Systems Architecture">1</subject>
+                    <subject name = "Queuing Theory">1</subject>
+                    <subject name = "Economy">2</subject>
+                    <subject name = "Databases">1</subject>
+                    <subject name = "Physical Education">2</subject>
                 </student>
             </group>
         </course>
         <course number="1">
-            <group id="АВТ-001">
-                <student initials="Романов Роман">
-                    <subject name="Программирование">1</subject>
-                    <subject name="Право">1</subject>
-                    <subject name="История">1</subject>
-                    <subject name="Физика">1</subject>
-                    <subject name="Линейная алгебра и геометрия">1</subject>
-                    <subject name="ТРПО">1</subject>
-                    <subject name="Английский язык">1</subject>
-                    <subject name="Дискретная математика">1</subject>
+            <group id="AVT-001">
+                <student initials="Romanov Roman">
+                    <subject name="Programming">1</subject>
+                    <subject name="Legal">1</subject>
+                    <subject name="History">1</subject>
+                    <subject name="Physics">1</subject>
+                    <subject name="Linear Algebra and Geometry">1</subject>
+                    <subject name="TRPO">1</subject>
+                    <subject name = "English">1</subject>
+                    <subject name="Discrete Math">1</subject>
                 </student>
             </group>
-            <group id="АВТ-333">
-                <student initials="Павлов Павел">
-                    <subject name="Программирование">2</subject>
-                    <subject name="Право">1</subject>
-                    <subject name="История">1</subject>
-                    <subject name="Физика">2</subject>
-                    <subject name="Линейная алгебра и геометрия">1</subject>
-                    <subject name="ТРПО">1</subject>
-                    <subject name="Английский язык">1</subject>
-                    <subject name="Дискретная математика">2</subject>
+            <group id="AVT-333">
+                <student initials="Pavlov Pavel">
+                    <subject name="Programming">2</subject>
+                    <subject name="Legal">1</subject>
+                    <subject name="History">1</subject>
+                    <subject name="Physics">2</subject>
+                    <subject name="Linear Algebra and Geometry">1</subject>
+                    <subject name="TRPO">1</subject>
+                    <subject name="English">1</subject>
+                    <subject name="Discrete Math">2</subject>
                 </student>
             </group>
         </course>
     </faculty>
-    <faculty name="ИВТ">
+    <faculty name="IVT">
         <course number="3">
-            <group id="ИП-817">
-                <student initials="Иванов Иван">
-                    <subject name="Метрология">2</subject>
-                    <subject name="ООП">2</subject>
-                    <subject name="Архитектура вычислительных систем">2</subject>
-                    <subject name="Теория массовго обслуживания">2</subject>
-                    <subject name="Экономика">2</subject>
-                    <subject name="Базы данных">2</subject>
-                    <subject name="Физическая культура">2</subject>
+            <group id="IP-817">
+                <student initials="Ivanov Ivan">
+                    <subject name="Metrology">2</subject>
+                    <subject name="OOP">2</subject>
+                    <subject name="Computing Systems Architecture">2</subject>
+                    <subject name="Queuing Theory">2</subject>
+                    <subject name="Economy">2</subject>
+                    <subject name="Databases">2</subject>
+                    <subject name="Physical Education">2</subject>
                 </student>
-                <student initials="Прохоров Прохор">
-                    <subject name="Метрология">1</subject>
-                    <subject name="ООП">2</subject>
-                    <subject name="Архитектура вычислительных систем">2</subject>
-                    <subject name="Теория массовго обслуживания">2</subject>
-                    <subject name="Экономика">1</subject>
-                    <subject name="Базы данных">2</subject>
-                    <subject name="Физическая культура">2</subject>
+                <student initials="Prokhorov Prokhor">
+                    <subject name="Metrology">1</subject>
+                    <subject name="OOP">2</subject>
+                    <subject name="Computing Systems Architecture">2</subject>
+                    <subject name="Queuing Theory">2</subject>
+                    <subject name="Economy"></subject>
+                    <subject name="Databases">2</subject>
+                    <subject name="Physical Education">2</subject>
                 </student>
             </group>
         </course>
         <course number="2">
-            <group id="ИП-900">
-                <student initials="Алексеев Алексей">
-                    <subject name="Интернет технологии">0</subject>
-                    <subject name="Математический анализ">0</subject>
-                    <subject name="Мат. лог. и теория алгоритмов">0</subject>
-                    <subject name="Электротехника и схемотехника">0</subject>
-                    <subject name="Структуры и алгоритмы обработки данных">0</subject>
-                    <subject name="Легкая атлетика">0</subject>
+            <group id="IP-900">
+                <student initials="Alekseev Alexey">
+                    <subject name="Internet technologies">0</subject>
+                    <subject name="Analysis">0</subject>
+                    <subject name="Math. logic and theory of algorithms">0</subject>
+                    <subject name="Electrical and Circuitry">0</subject>
+                    <subject name="Data processing structures and algorithms">0</subject>
+                    <subject name="Athletics">0</subject>
                 </student>
             </group>
-            <group id="ИП-942">
-                <student initials="Дмитриев Дмитрий">
-                    <subject name="Интернет технологии">2</subject>
-                    <subject name="Математический анализ">2</subject>
-                    <subject name="Мат. лог. и теория алгоритмов">2</subject>
-                    <subject name="Электротехника и схемотехника">2</subject>
-                    <subject name="Структуры и алгоритмы обработки данных">1</subject>
-                    <subject name="Легкая атлетика">1</subject>
+            <group id="IP-942">
+                <student initials="Dmitriev Dmitry">
+                    <subject name="Internet Technologies">2</subject>
+                    <subject name="Analysis">2</subject>
+                    <subject name="Math. logic and theory of algorithms">2</subject>
+                    <subject name="Electrical and Circuit Engineering">2</subject>
+                    <subject name="Data processing structures and algorithms">1</subject>
+                    <subject name="Athletics">1</subject>
                 </student>
             </group>
         </course>

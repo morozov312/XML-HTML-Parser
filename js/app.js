@@ -36,11 +36,11 @@ getRoot.then((xmlRoot) => {
     // onchange event listeners
     facultySelect.addEventListener('change', () => {
         groupSelect.length = 0
-        groupSelect.append(setPlaceholder('Выберите группу'))
+        groupSelect.append(setPlaceholder('Choose a group'))
         courseSelect.length = 0
-        courseSelect.append(setPlaceholder('Выберите курс'))
+        courseSelect.append(setPlaceholder('Choose a course'))
         initialsSelect.length = 0
-        initialsSelect.append(setPlaceholder('Выберите студента'))
+        initialsSelect.append(setPlaceholder('Choose a student'))
         for (let i = 0; i < facultyArr.length; i++) {
             if (facultyArr[i].name == facultySelect.value) {
                 for (let j = 0; j < facultyArr[i].courses.length; j++) {
@@ -51,9 +51,9 @@ getRoot.then((xmlRoot) => {
     })
     courseSelect.addEventListener('change', () => {
         groupSelect.length = 0
-        groupSelect.append(setPlaceholder('Выберите группу'))
+        groupSelect.append(setPlaceholder('Choose a group'))
         initialsSelect.length = 0
-        initialsSelect.append(setPlaceholder('Выберите студента'))
+        initialsSelect.append(setPlaceholder('Choose a student'))
         for (let i = 0; i < facultyArr.length; i++) {
             if (facultyArr[i].name == facultySelect.value) {
                 for (let j = 0; j < facultyArr[i].courses.length; j++) {
@@ -69,7 +69,7 @@ getRoot.then((xmlRoot) => {
     })
     groupSelect.addEventListener('change', () => {
         initialsSelect.length = 0
-        initialsSelect.append(setPlaceholder('Выберите студента'))
+        initialsSelect.append(setPlaceholder('Choose a student'))
         // if faculty selected
         if (courseSelect.value != 'placeholder') {
             for (let i = 0; i < facultyArr.length; i++) {
@@ -165,7 +165,7 @@ getRoot.then((xmlRoot) => {
         }
         res.innerHTML = ''
         let averageMark = (sum / size).toFixed(2)
-        res.insertAdjacentHTML('beforeend', `Средний бал равен: 
+        res.insertAdjacentHTML('beforeend', `Average mark: 
         <span> ${averageMark}  </span>
         `)
     })
