@@ -8,7 +8,6 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     minifyCss = require('gulp-clean-css'),
     rename = require('gulp-rename'),
-    imagemin = require('gulp-imagemin'),
     webpack = require('webpack'),
     webpackStream = require('webpack-stream'),
     webpackConfig = require('./webpack.config.js')
@@ -44,11 +43,6 @@ function buildScss() {
         .pipe(gulp.dest(`${distDir}/styles/`))
         .pipe(browserSync.stream())
 }
-function loadImages() {
-    return gulp.src(`${srcDir}/images/**/*.{jpg,png,svg,ico,webp}`)
-        .pipe(gulp.dest(`${distDir}/images/`))
-        .pipe(browserSync.stream())
-}
 function buildJs() {
     return gulp.src(`${srcDir}/js/**/*.js`)
         .pipe(webpackStream(webpackConfig, webpack))
@@ -56,8 +50,8 @@ function buildJs() {
         .pipe(browserSync.stream())
 }
 function watchFiles() {
-    gulp.watch(`${srcDir}/pug/*.pug`, buildPug)
-    gulp.watch(`${srcDir}/scss/style.scss`, buildScss)
+    gulp.watch(`${srcDir}/pug/**/*.pug`, buildPug)
+    gulp.watch(`${srcDir}/scss/**/*.scss`, buildScss)
     gulp.watch(`${srcDir}/images/**/*`, loadImages)
     gulp.watch(`${srcDir}/js/**/*.js`, buildJs)
 }
@@ -66,21 +60,9 @@ function cleanDest() {
 }
 // your tasks
 gulp.task('clear', cleanDest)
-gulp.task('trimImg', function () {
-    return gulp.src(`${distDir}/images/**/*`)
-        .pipe(imagemin({
-            progressive: true,
-            interplaced: true,
-            svgoPlugins: [{ removeVievBox: false }],
-            optimizationLevel: 3 // 0 to 7
-
-        }))
-        .pipe(gulp.dest(`${distDir}/images/`))
-})
 // define complex tasks && export
-const build = gulp.series(cleanDest, gulp.parallel(buildPug, buildScss, loadImages, buildJs))
+const build = gulp.series(cleanDest, gulp.parallel(buildPug, buildScss, buildJs))
 const watch = gulp.parallel(build, watchFiles, reloadBrowser)
-exports.images = loadImages
 exports.js = buildJs
 exports.css = buildScss
 exports.html = buildPug

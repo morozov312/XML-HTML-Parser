@@ -1,7 +1,7 @@
 {
-  "name": "my.website.template",
+  "name": "xml-html-parser",
   "version": "2.0.0",
-  "description": "basic build of a web project",
+  "description": "...",
   "main": "./src/js/index.js",
   "scripts": {
     "test": "jest"
@@ -34,5 +34,6 @@
     "jest": "^26.6.3",
     "webpack": "^5.12.2",
     "webpack-stream": "^6.1.1"
-  }
+  },
+  "dependencies": {}
 }
