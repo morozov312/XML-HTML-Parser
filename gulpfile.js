@@ -15,7 +15,7 @@ const gulp = require('gulp'),
 let srcDir = './src',
     distDir = './dist'
 // gulp functions
-function reloadBrowser() {
+function ReloadBrowser() {
     browserSync.init({
         server: {
             baseDir: `${distDir}/`
@@ -24,13 +24,13 @@ function reloadBrowser() {
         notify: false
     })
 }
-function buildPug() {
+function BuildPug() {
     return gulp.src(`${srcDir}/pug/*.pug`)
         .pipe(pug({ pretty: true }))
         .pipe(gulp.dest(`${distDir}/`))
         .pipe(browserSync.stream())
 }
-function buildScss() {
+function BuildScss() {
     return gulp.src(`${srcDir}/scss/style.scss`)
         .pipe(scss({ outputStyle: 'expanded' }))
         .pipe(autoprefixer({
@@ -43,30 +43,29 @@ function buildScss() {
         .pipe(gulp.dest(`${distDir}/styles/`))
         .pipe(browserSync.stream())
 }
-function buildJs() {
+function BuildJs() {
     return gulp.src(`${srcDir}/js/**/*.js`)
         .pipe(webpackStream(webpackConfig, webpack))
         .pipe(gulp.dest(`${distDir}/js/`))
         .pipe(browserSync.stream())
 }
 function watchFiles() {
-    gulp.watch(`${srcDir}/pug/**/*.pug`, buildPug)
-    gulp.watch(`${srcDir}/scss/**/*.scss`, buildScss)
-    gulp.watch(`${srcDir}/images/**/*`, loadImages)
-    gulp.watch(`${srcDir}/js/**/*.js`, buildJs)
+    gulp.watch(`${srcDir}/pug/**/*.pug`, BuildPug)
+    gulp.watch(`${srcDir}/scss/**/*.scss`, BuildScss)
+    gulp.watch(`${srcDir}/js/**/*.js`, BuildJs)
 }
-function cleanDest() {
+function CleanDist() {
     return del([distDir]);
 }
 // your tasks
-gulp.task('clear', cleanDest)
+gulp.task('clear', CleanDist)
 // define complex tasks && export
-const build = gulp.series(cleanDest, gulp.parallel(buildPug, buildScss, buildJs))
-const watch = gulp.parallel(build, watchFiles, reloadBrowser)
-exports.js = buildJs
-exports.css = buildScss
-exports.html = buildPug
-exports.clean = cleanDest
+const build = gulp.series(CleanDist, gulp.parallel(BuildPug, BuildScss, BuildJs))
+const watch = gulp.parallel(build, watchFiles, ReloadBrowser)
+exports.js = BuildJs
+exports.css = BuildScss
+exports.html = BuildPug
+exports.clean = CleanDist
 exports.build = build
 exports.watch = watch
 exports.default = watch
