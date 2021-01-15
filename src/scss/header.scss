@@ -1,11 +1,20 @@
-.header{
+.header {
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 .select_list {
+    width: 70%;
+    margin: 0 auto;
     display: flex;
-    flex:0 1 20%;
     justify-content: space-between;
-    align-items: center;
+    label {
+        display: flex;
+        align-items: center;
+        flex: 0 1 25%;
+        justify-content: center;
+        margin-top: 2%;
+        .ss-main {
+           width: 50%;
+           margin-left: 5%;
+        }
+    }
 }
