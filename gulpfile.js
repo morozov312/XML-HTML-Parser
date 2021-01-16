@@ -44,15 +44,15 @@ function BuildScss() {
         .pipe(browserSync.stream())
 }
 function BuildJs() {
-    return gulp.src(`${srcDir}/js/**/*.js`)
+    return gulp.src(`${srcDir}/js/**/*.{ts,js}`)
         .pipe(webpackStream(webpackConfig, webpack))
         .pipe(gulp.dest(`${distDir}/js/`))
         .pipe(browserSync.stream())
 }
-function watchFiles() {
+function WatchFiles() {
     gulp.watch(`${srcDir}/pug/**/*.pug`, BuildPug)
     gulp.watch(`${srcDir}/scss/**/*.scss`, BuildScss)
-    gulp.watch(`${srcDir}/js/**/*.js`, BuildJs)
+    gulp.watch(`${srcDir}/js/**/*.{ts,js}`, BuildJs)
 }
 function CleanDist() {
     return del([distDir]);
@@ -61,7 +61,7 @@ function CleanDist() {
 gulp.task('clear', CleanDist)
 // define complex tasks && export
 const build = gulp.series(CleanDist, gulp.parallel(BuildPug, BuildScss, BuildJs))
-const watch = gulp.parallel(build, watchFiles, ReloadBrowser)
+const watch = gulp.parallel(build, WatchFiles, ReloadBrowser)
 exports.js = BuildJs
 exports.css = BuildScss
 exports.html = BuildPug

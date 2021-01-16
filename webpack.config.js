@@ -1,20 +1,23 @@
 module.exports = {
     mode: 'production',
     entry: {
-        index: './src/js/index.js'
+        index: './src/js/index.ts'
     },
     output: {
         filename: '[name].bundle.js',
     },
+    resolve: {
+        extensions: ['.ts', '.js']
+    },
     module: {
         rules: [
             {
-                test: /\.m?js$/,
+                test: /\.ts$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env', '@babel/preset-typescript']
                     }
                 }
             }

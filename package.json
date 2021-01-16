@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "del": "^6.0.0",
@@ -35,5 +36,7 @@
     "webpack": "^5.12.2",
     "webpack-stream": "^6.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "slim-select": "^1.27.0"
+  }
 }
