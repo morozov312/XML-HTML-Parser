@@ -1,8 +1,12 @@
 {
   "name": "xml-html-parser",
   "version": "2.0.0",
-  "description": "...",
-  "main": "./src/js/index.js",
+  "description": "xml parser, training using js, ts, babel, gulp and webpack",
+  "main": "./src/js/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morozov312/XML-HTML-Parser"
+  },
   "scripts": {
     "test": "jest"
   },
@@ -12,14 +16,17 @@
     "pug",
     "scss",
     "js",
+    "typescript",
     "build",
-    "jest"
+    "jest",
+    "xml"
   ],
   "author": "morozov312",
   "license": "ISC",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
     "babel-loader": "^8.2.2",

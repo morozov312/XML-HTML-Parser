@@ -44,7 +44,7 @@ function BuildScss() {
         .pipe(browserSync.stream())
 }
 function BuildJs() {
-    return gulp.src(`${srcDir}/js/**/*.{ts,js}`)
+    return gulp.src(`${srcDir}/js/**/*.ts`)
         .pipe(webpackStream(webpackConfig, webpack))
         .pipe(gulp.dest(`${distDir}/js/`))
         .pipe(browserSync.stream())
@@ -52,7 +52,7 @@ function BuildJs() {
 function WatchFiles() {
     gulp.watch(`${srcDir}/pug/**/*.pug`, BuildPug)
     gulp.watch(`${srcDir}/scss/**/*.scss`, BuildScss)
-    gulp.watch(`${srcDir}/js/**/*.{ts,js}`, BuildJs)
+    gulp.watch(`${srcDir}/js/**/*.ts`, BuildJs)
 }
 function CleanDist() {
     return del([distDir]);
