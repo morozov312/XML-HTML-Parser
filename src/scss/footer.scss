@@ -1,0 +1,24 @@
+.footer__buttons {
+    margin: 0 auto;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+.btn {
+    box-sizing: border-box;
+    border: 1px solid #eb8b71;
+    background-color: #fff;
+    border-radius: 0.6em;
+    line-height: 1;
+    color: #eb8b71;
+    padding: 1.2em 2.8em;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    &:hover {
+        background-color: #eb8b71;
+        border: 1px solid #eb8b71;
+        color: #ffffff;
+    }
+}
