@@ -1,0 +1,17 @@
+// laptop
+@media (max-width: 1200px) {
+    .select-list{
+        flex-wrap: wrap;
+        label{
+            flex: 0 1 48%;
+        }
+    }
+}
+// tablet
+@media (max-width: 768px) {
+    .select-list{
+        label{
+            flex: 0 1 100%;
+        }
+    }
+}

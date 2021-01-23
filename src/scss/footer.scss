@@ -2,23 +2,24 @@
     margin: 0 auto;
     width: 40%;
     display: flex;
+    // flex-direction: column;
     justify-content: space-between;
     margin-top: 5%;
 }
+$btnColor: #0388b1c2;
 .btn {
-    box-sizing: border-box;
-    border: 1px solid #eb8b71;
+    @include adaptive-font(16, 12);
+    border: 1px solid $btnColor;
     background-color: #fff;
+    color: $btnColor;
     border-radius: 0.6em;
     line-height: 1;
-    color: #eb8b71;
-    padding: 1.2em 2.8em;
+    padding: 1.2em 2.4em;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     &:hover {
-        background-color: #eb8b71;
-        border: 1px solid #eb8b71;
+        background-color: $btnColor;
         color: #ffffff;
     }
 }

@@ -8,7 +8,8 @@
     "url": "https://github.com/morozov312/XML-HTML-Parser"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "gulp"
   },
   "keywords": [
     "gulp",
