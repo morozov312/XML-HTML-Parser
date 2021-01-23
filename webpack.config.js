@@ -1,7 +1,8 @@
+require("babel-polyfill")
 module.exports = {
     mode: 'production',
     entry: {
-        index: './src/js/index.ts'
+        index: ['babel-polyfill', './src/js/index.ts']
     },
     output: {
         filename: '[name].bundle.js',
@@ -18,7 +19,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-typescript'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
+                        plugins: ['@babel/plugin-proposal-class-properties', 'transform-regenerator']
                     }
                 }
             }

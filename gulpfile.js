@@ -49,6 +49,10 @@ function BuildJs() {
         .pipe(gulp.dest(`${distDir}/js/`))
         .pipe(browserSync.stream())
 }
+function LoadXML(){
+    return gulp.src(`${srcDir}/*.xml`)
+        .pipe(gulp.dest(`${distDir}/`))
+}
 function WatchFiles() {
     gulp.watch(`${srcDir}/pug/**/*.pug`, BuildPug)
     gulp.watch(`${srcDir}/scss/**/*.scss`, BuildScss)
@@ -60,11 +64,12 @@ function CleanDist() {
 // your tasks
 gulp.task('clear', CleanDist)
 // define complex tasks && export
-const build = gulp.series(CleanDist, gulp.parallel(BuildPug, BuildScss, BuildJs))
+const build = gulp.series(CleanDist, gulp.parallel(BuildPug, BuildScss, BuildJs,LoadXML))
 const watch = gulp.parallel(build, WatchFiles, ReloadBrowser)
-exports.js = BuildJs
-exports.css = BuildScss
 exports.html = BuildPug
+exports.css = BuildScss
+exports.js = BuildJs
+exports.xml = LoadXML
 exports.clean = CleanDist
 exports.build = build
 exports.watch = watch
