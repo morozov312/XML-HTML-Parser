@@ -1,17 +1,27 @@
 // laptop
 @media (max-width: 1200px) {
-    .select-list{
+    .select-list {
         flex-wrap: wrap;
-        label{
+        label {
             flex: 0 1 48%;
         }
     }
 }
 // tablet
 @media (max-width: 768px) {
-    .select-list{
-        label{
+    .select-list {
+        label {
             flex: 0 1 100%;
         }
+    }
+    .footer__buttons {
+        width: 25%;
+        flex-direction: column-reverse;
+    }
+}
+// mobile L
+@media (max-width: 425px) {
+    .footer__buttons {
+        width: 40%;
     }
 }

@@ -2,19 +2,19 @@
     margin: 0 auto;
     width: 40%;
     display: flex;
-    // flex-direction: column;
     justify-content: space-between;
     margin-top: 5%;
 }
-$btnColor: #0388b1c2;
+$btnColor: #057192a8;
 .btn {
-    @include adaptive-font(16, 12);
+    margin: 2% 0;
+    @include adaptive-font(15, 10);
     border: 1px solid $btnColor;
     background-color: #fff;
     color: $btnColor;
     border-radius: 0.6em;
     line-height: 1;
-    padding: 1.2em 2.4em;
+    padding: 1.2em 2.5em;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
