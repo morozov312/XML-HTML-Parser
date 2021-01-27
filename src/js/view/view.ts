@@ -7,16 +7,19 @@ class View {
     private listArr: Select[] = []
     // public:
     constructor() {
-        this.listArr.push(new Faculty())
-        this.listArr.push(new Course())
-        this.listArr.push(new Group())
-        this.listArr.push(new Student())
+        this.listArr.push(
+            new Faculty(),
+            new Course(),
+            new Group(),
+            new Student()
+        )
     }
     public renderAll(xmlData: Element): void {
-        this.listArr.forEach((i, index) => {
-            i.render()
-            i.initialLoad(xmlData)
-            i.setCallback(index, this.listArr)
+        this.listArr.forEach((item, index) => {
+            item
+                .render()
+                .initialLoad(xmlData)
+                .setCallback(xmlData, index, this.listArr)
         })
     }
 }
