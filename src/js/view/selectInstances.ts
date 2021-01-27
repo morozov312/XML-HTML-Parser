@@ -1,4 +1,5 @@
 import SlimSelect from 'slim-select'
+import { dataObject } from 'slim-select/dist/data'
 import SelectFactory from './selectFactory'
 
 interface option {
@@ -45,34 +46,34 @@ export abstract class Select {
         return Select.createOptionArray(nodeArr, attributeName)
     }
     private clearDependentSelect(index: number, arr: Select[]): void {
-        for (let i: number = index + 1; i < arr.length; i++) {
-            let childOptions: Element = arr[i].getOriginalSelect()
+        //TODO: work but need refactoring
+        let rr = arr.slice(index + 1, arr.length)
+        rr.forEach(i => {
+            let childOptions: Element = i.getOriginalSelect()
             while (childOptions.children.length != 1) {
                 childOptions.lastChild.remove()
             }
-        }
+            let aR = i.selectList.data.data;
+            i.selectList.data.data = aR.filter((f) => f.value == 'placeholder')
+        })
     }
     getChildren(xmlData: Element, selectedElement: string): option[] {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
         for (let i: number = 0; i < nodeArr.length; i++) {
             if (nodeArr[i].getAttribute(this.infoAttribute) == selectedElement) {
-                return Select.createOptionArray(nodeArr[i].children, this.childAttribute)
+                return Select.createOptionArray(nodeArr[i].children, this.childAttribute) || []
             }
         }
     }
     private fillChildSelect(xmlData: Element, index: number, arr: Select[]) {
-        for (let i: number = 0; i < index + 1; i++) {
-            let selected = this.selectList.selected()
-            let c = this.getChildren(xmlData, selected.toString())
-            Select.fillSelect(arr[i + 1], c)
-        }
-        console.log(arr[index].selectList.selected());
+        let selected = this.selectList.selected()
+        let c = this.getChildren(xmlData, selected.toString())
+        Select.fillSelect(arr[index + 1], c)
     }
     private onChangeCallback(xmlData: Element, index: number, arr: Select[]): void {
         this.clearDependentSelect(index, arr)
         this.fillChildSelect(xmlData, index, arr)
     }
-
     // public:
     constructor(config: selectConfig) {
         this.id = config.id
@@ -108,6 +109,7 @@ export class Faculty extends Select {
         })
     }
 }
+
 export class Course extends Select {
     constructor() {
         super({
@@ -117,6 +119,7 @@ export class Course extends Select {
         })
     }
 }
+
 export class Group extends Select {
     constructor() {
         super({
@@ -127,6 +130,7 @@ export class Group extends Select {
         })
     }
 }
+
 export class Student extends Select {
     constructor() {
         super({
