@@ -58,7 +58,6 @@ export abstract class Select {
     }
     private getChildren(xmlData: Element, selectedElement: string): option[] {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
-        if (!nodeArr) return []
         for (let i: number = 0; i < nodeArr.length; i++) {
             if (nodeArr[i].getAttribute(this.infoAttribute) == selectedElement) {
                 return Select.createOptionArray(nodeArr[i].children, this.childAttribute)
@@ -66,9 +65,9 @@ export abstract class Select {
         }
     }
     private fillChildSelect(xmlData: Element, index: number, arr: Select[]): void {
-        let selected = this.selectList.selected()
-        let c = this.getChildren(xmlData, selected.toString())
-        Select.fillSelect(arr[index + 1], c)
+        let selected: string = this.selectList.selected().toString()
+        let childOptionsArr: option[] = this.getChildren(xmlData, selected)
+        if (index + 1 !== arr.length) Select.fillSelect(arr[index + 1], childOptionsArr)
     }
     private onChangeCallback(xmlData: Element, index: number, arr: Select[]): void {
         this.clearDependentSelect(index, arr)
