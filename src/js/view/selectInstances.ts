@@ -45,9 +45,9 @@ export abstract class Select {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
         return Select.createOptionArray(nodeArr, attributeName)
     }
-    private clearDependentSelect(index: number, arr: Select[]): void {
-        arr
-            .slice(index + 1, arr.length)
+    private clearDependentSelect(currIndex: number, selectArray: Select[]): void {
+        selectArray
+            .slice(currIndex + 1, selectArray.length)
             .forEach(i => {
                 let childOptions: Element = i.getOriginalSelect()
                 while (childOptions.children.length != 1) {
@@ -58,20 +58,49 @@ export abstract class Select {
     }
     private getChildren(xmlData: Element, selectedElement: string): option[] {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
+        // need fix
         for (let i: number = 0; i < nodeArr.length; i++) {
             if (nodeArr[i].getAttribute(this.infoAttribute) == selectedElement) {
                 return Select.createOptionArray(nodeArr[i].children, this.childAttribute)
             }
         }
     }
-    private fillChildSelect(xmlData: Element, index: number, arr: Select[]): void {
-        let selected: string = this.selectList.selected().toString()
+    private fillChildSelect(xmlData: Element, currIndex: number, selectArray: Select[]): void {
+        let selected: string = this.selectList.selected().toString() // bug
         let childOptionsArr: option[] = this.getChildren(xmlData, selected)
-        if (index + 1 !== arr.length) Select.fillSelect(arr[index + 1], childOptionsArr)
+        if (currIndex + 1 !== selectArray.length) Select.fillSelect(selectArray[currIndex + 1], childOptionsArr)
     }
-    private onChangeCallback(xmlData: Element, index: number, arr: Select[]): void {
-        this.clearDependentSelect(index, arr)
-        this.fillChildSelect(xmlData, index, arr)
+    private needOverride(currIndex: number, selectArray: Select[]): boolean {
+        for (let i = 0; i < currIndex; i++) {
+            let value: string = selectArray[i].selectList.selected().toString()
+            if (value === 'placeholder') return true
+        }
+        return false
+    }
+    private override(xmlData: Element, currIndex: number, selectArray: Select[]): void {
+        // bug IP-817
+        if (!this.needOverride(currIndex, selectArray)) return;
+        let selectedValue: string = selectArray[currIndex].selectList.selected().toString()
+        let nodeArr: HTMLCollection = xmlData.getElementsByTagName(selectArray[currIndex].id)
+        let arrayOfElements: Element[] = []
+        for (let i: number = 0; i < nodeArr.length; i++) {
+            if (nodeArr[i].getAttribute(this.infoAttribute) === selectedValue) {
+                arrayOfElements.push(nodeArr[i])
+                break
+            }
+        }
+        for (let i: number = 0; i < currIndex; i++) {
+            arrayOfElements.push(arrayOfElements[i].parentElement)
+        }
+        arrayOfElements.reverse().forEach((i, index) => {
+            let attributeValue: string = i.getAttribute(selectArray[index].infoAttribute)
+            selectArray[index].selectList.set(attributeValue)
+        })
+    }
+    private onChangeCallback(xmlData: Element, currIndex: number, selectArray: Select[]): void {
+        this.clearDependentSelect(currIndex, selectArray)
+        this.fillChildSelect(xmlData, currIndex, selectArray)
+        this.override(xmlData, currIndex, selectArray)
     }
     // public:
     constructor(config: selectConfig) {
@@ -92,8 +121,8 @@ export abstract class Select {
         }
         return this
     }
-    public setCallback(xmlData: Element, index: number, arr: Select[]): Select {
-        this.selectList.onChange = () => { this.onChangeCallback(xmlData, index, arr) }
+    public setCallback(xmlData: Element, currIndex: number, selectArray: Select[]): Select {
+        this.selectList.onChange = () => { this.onChangeCallback(xmlData, currIndex, selectArray) }
         return this
     }
 }
