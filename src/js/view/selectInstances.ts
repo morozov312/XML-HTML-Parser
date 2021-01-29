@@ -1,5 +1,4 @@
 import SlimSelect from 'slim-select'
-import { dataObject } from 'slim-select/dist/data'
 import SelectFactory from './selectFactory'
 
 interface option {
@@ -21,7 +20,7 @@ export abstract class Select {
     private infoAttribute: string
     private childAttribute: string
     private needInitianalLoad: boolean
-    // private methods
+    // private static methods
     private static createOptionArray(nodeArr: HTMLCollection, attributeName: string): option[] {
         let res: option[] = []
         for (let i: number = 0; i < nodeArr.length; i++) {
@@ -33,11 +32,12 @@ export abstract class Select {
         }
         return res
     }
-    private static fillSelect(select: Select, optionArr: option[]) {
+    private static fillSelect(select: Select, optionArr: option[]): void {
         optionArr.forEach(i => {
             select.selectList.addData(i)
         })
     }
+    // private methods
     private getOriginalSelect(): Element {
         return document.querySelector(`#${this.id}`)
     }
@@ -46,26 +46,26 @@ export abstract class Select {
         return Select.createOptionArray(nodeArr, attributeName)
     }
     private clearDependentSelect(index: number, arr: Select[]): void {
-        //TODO: work but need refactoring
-        let rr = arr.slice(index + 1, arr.length)
-        rr.forEach(i => {
-            let childOptions: Element = i.getOriginalSelect()
-            while (childOptions.children.length != 1) {
-                childOptions.lastChild.remove()
-            }
-            let aR = i.selectList.data.data;
-            i.selectList.data.data = aR.filter((f) => f.value == 'placeholder')
-        })
+        arr
+            .slice(index + 1, arr.length)
+            .forEach(i => {
+                let childOptions: Element = i.getOriginalSelect()
+                while (childOptions.children.length != 1) {
+                    childOptions.lastChild.remove()
+                }
+                i.selectList.data.data.length = 1
+            })
     }
-    getChildren(xmlData: Element, selectedElement: string): option[] {
+    private getChildren(xmlData: Element, selectedElement: string): option[] {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
+        if (!nodeArr) return []
         for (let i: number = 0; i < nodeArr.length; i++) {
             if (nodeArr[i].getAttribute(this.infoAttribute) == selectedElement) {
-                return Select.createOptionArray(nodeArr[i].children, this.childAttribute) || []
+                return Select.createOptionArray(nodeArr[i].children, this.childAttribute)
             }
         }
     }
-    private fillChildSelect(xmlData: Element, index: number, arr: Select[]) {
+    private fillChildSelect(xmlData: Element, index: number, arr: Select[]): void {
         let selected = this.selectList.selected()
         let c = this.getChildren(xmlData, selected.toString())
         Select.fillSelect(arr[index + 1], c)
