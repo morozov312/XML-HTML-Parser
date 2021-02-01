@@ -22,6 +22,7 @@ export abstract class Select {
     private childAttribute: string
     private needInitianalLoad: boolean
     private finallyLoadTarget: string = '.results__body'
+    private resultField: string = '.results__value'
     // private static methods
     private static createOptionArray(nodeArr: HTMLCollection, attributeName: string): option[] {
         let res: option[] = []
@@ -49,8 +50,8 @@ export abstract class Select {
         return Select.createOptionArray(nodeArr, attributeName)
     }
     private clearTable(): void {
-        let target: Element = document.querySelector(this.finallyLoadTarget)
-        target.innerHTML = ''
+        document.querySelector(this.finallyLoadTarget).innerHTML = ''
+        document.querySelector(this.resultField).innerHTML = ''
     }
     private clearDependentSelect(currIndex: number, selectArray: Select[]): void {
         selectArray
@@ -136,7 +137,7 @@ export abstract class Select {
         this.fillChildSelect(xmlData, currIndex, selectArray)
         this.override(xmlData, currIndex, selectArray)
     }
-    // public:
+    // public methods:
     constructor(config: selectConfig) {
         this.id = config.id
         this.infoAttribute = config.infoAttribute

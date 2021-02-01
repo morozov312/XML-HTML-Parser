@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 $border-type: 1px solid #dadada;
 .results {
     display: flex;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
     &__table {
         width: 70%;
         border-top: $border-type;
@@ -19,6 +20,10 @@ $border-type: 1px solid #dadada;
         .row:hover {
             background-color: #fff7f7ce;
         }
+    }
+    &__value {
+        font-size: 1.5em;
+        margin: 2.5em 0;
     }
     .row {
         display: flex;
