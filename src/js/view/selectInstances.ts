@@ -56,18 +56,23 @@ export abstract class Select {
                 i.selectList.data.data.length = 1
             })
     }
-    private getChildren(xmlData: Element, selectedElement: string): option[] {
-        let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
-        // need fix
-        for (let i: number = 0; i < nodeArr.length; i++) {
-            if (nodeArr[i].getAttribute(this.infoAttribute) == selectedElement) {
-                return Select.createOptionArray(nodeArr[i].children, this.childAttribute)
+    private getChildren(xmlData: Element, currIndex: number, selectArray: Select[]): option[] {
+        let currElement: Element = xmlData
+        let nodeArr: HTMLCollection
+        for (let i = 0; i < currIndex + 1; i++) {
+            let selected: string = selectArray[i].selectList.selected().toString()
+            nodeArr = currElement.getElementsByTagName(selectArray[i].id)
+            for (let j = 0; j < nodeArr.length; j++) {
+                if (nodeArr[j].getAttribute(selectArray[i].infoAttribute) === selected) {
+                    currElement = nodeArr[j]
+                    break
+                }
             }
         }
+        return Select.createOptionArray(currElement.children, selectArray[currIndex].childAttribute)
     }
     private fillChildSelect(xmlData: Element, currIndex: number, selectArray: Select[]): void {
-        let selected: string = this.selectList.selected().toString() // bug
-        let childOptionsArr: option[] = this.getChildren(xmlData, selected)
+        let childOptionsArr: option[] = this.getChildren(xmlData, currIndex, selectArray)
         if (currIndex + 1 !== selectArray.length) Select.fillSelect(selectArray[currIndex + 1], childOptionsArr)
     }
     private needOverride(currIndex: number, selectArray: Select[]): boolean {
@@ -78,7 +83,6 @@ export abstract class Select {
         return false
     }
     private override(xmlData: Element, currIndex: number, selectArray: Select[]): void {
-        // bug IP-817
         if (!this.needOverride(currIndex, selectArray)) return;
         let selectedValue: string = selectArray[currIndex].selectList.selected().toString()
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(selectArray[currIndex].id)
