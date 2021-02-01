@@ -3,14 +3,15 @@ import SelectFactory from './selectFactory'
 
 interface option {
     text: string,
-    value: string
+    value: string,
+    textContent: string
 }
 
 interface selectConfig {
-    id: string
-    infoAttribute: string
-    childAttribute: string
-    needInitialLoad?: boolean
+    id: string,
+    infoAttribute: string,
+    childAttribute: string,
+    needInitialLoad?: boolean,
 }
 
 export abstract class Select {
@@ -20,6 +21,7 @@ export abstract class Select {
     private infoAttribute: string
     private childAttribute: string
     private needInitianalLoad: boolean
+    private finallyLoadTarget: string = '.results__body'
     // private static methods
     private static createOptionArray(nodeArr: HTMLCollection, attributeName: string): option[] {
         let res: option[] = []
@@ -27,7 +29,8 @@ export abstract class Select {
             let attributeText = nodeArr[i].getAttribute(attributeName)
             res.push({
                 text: attributeText,
-                value: attributeText
+                value: attributeText,
+                textContent: nodeArr[i].textContent.trim()
             })
         }
         return res
@@ -45,6 +48,10 @@ export abstract class Select {
         let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
         return Select.createOptionArray(nodeArr, attributeName)
     }
+    private clearTable(): void {
+        let target: Element = document.querySelector(this.finallyLoadTarget)
+        target.innerHTML = ''
+    }
     private clearDependentSelect(currIndex: number, selectArray: Select[]): void {
         selectArray
             .slice(currIndex + 1, selectArray.length)
@@ -54,6 +61,7 @@ export abstract class Select {
                     childOptions.lastChild.remove()
                 }
                 i.selectList.data.data.length = 1
+                i.clearTable()
             })
     }
     private getChildren(xmlData: Element, currIndex: number, selectArray: Select[]): option[] {
@@ -71,9 +79,31 @@ export abstract class Select {
         }
         return Select.createOptionArray(currElement.children, selectArray[currIndex].childAttribute)
     }
+    private fillTableRow(subjectName: string, subjectIndex: number, value: number): string {
+        let accesAtributes = ['disabled', 'disabled', 'disabled']
+        accesAtributes[value] = 'checked'
+        return `<div class="row">
+                    <div class="cell">${subjectName} </div>
+                    <div class="cell cell_center"><input ${accesAtributes[0]} class="checkbox" type="radio" name="subject_${subjectIndex}" value="0"></div>
+                    <div class="cell cell_center"><input ${accesAtributes[1]} class="checkbox" type="radio" name="subject_${subjectIndex}" value="1"></div>
+                    <div class="cell cell_center"><input ${accesAtributes[2]} class="checkbox" type="radio" name="subject_${subjectIndex}" value="2"></div>
+                </div>`
+    }
+    private finallyLoad(optionArr: option[]) {
+        this.clearTable()
+        let target: Element = document.querySelector(this.finallyLoadTarget)
+        optionArr.forEach((i, index) => {
+            let rowText = this.fillTableRow(i.text, index, Number(i.textContent))
+            target.insertAdjacentHTML('beforeend', rowText)
+        })
+    }
     private fillChildSelect(xmlData: Element, currIndex: number, selectArray: Select[]): void {
         let childOptionsArr: option[] = this.getChildren(xmlData, currIndex, selectArray)
-        if (currIndex + 1 !== selectArray.length) Select.fillSelect(selectArray[currIndex + 1], childOptionsArr)
+        if (currIndex + 1 === selectArray.length) {
+            this.finallyLoad(childOptionsArr)
+        } else {
+            Select.fillSelect(selectArray[currIndex + 1], childOptionsArr)
+        }
     }
     private needOverride(currIndex: number, selectArray: Select[]): boolean {
         for (let i = 0; i < currIndex; i++) {
@@ -147,7 +177,7 @@ export class Course extends Select {
         super({
             id: 'course',
             infoAttribute: 'number',
-            childAttribute: 'id',
+            childAttribute: 'id'
         })
     }
 }
@@ -168,7 +198,7 @@ export class Student extends Select {
         super({
             id: 'student',
             infoAttribute: 'initials',
-            childAttribute: 'name',
+            childAttribute: 'name'
         })
     }
 }
