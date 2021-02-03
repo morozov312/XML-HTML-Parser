@@ -5,13 +5,14 @@ $border-type: 1px solid #dadada;
     flex-direction: column;
     align-items: center;
     font-family: "Montserrat", sans-serif;
+    @include adaptive-font(18, 14);
     &__table {
         width: 70%;
         border-top: $border-type;
         border-left: $border-type;
         border-right: $border-type;
         border-radius: 3px;
-        margin-top: 2%;
+        margin-top: 3%;
     }
     &__head {
         background-color: #0388b113;
@@ -22,7 +23,7 @@ $border-type: 1px solid #dadada;
         }
     }
     &__value {
-        font-size: 1.5em;
+        @include adaptive-font(22, 16);
         margin: 2.5em 0;
     }
     .row {
@@ -32,7 +33,7 @@ $border-type: 1px solid #dadada;
     }
     .cell {
         width: 15%;
-        padding: 1%;
+        padding: 2%;
         box-sizing: border-box;
         border-right: $border-type;
         &_center {
