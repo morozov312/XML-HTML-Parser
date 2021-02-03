@@ -18,7 +18,8 @@ let srcDir = './src',
 function ReloadBrowser() {
     browserSync.init({
         server: {
-            baseDir: `${distDir}/`
+            baseDir: `${distDir}/`,
+            index: 'index.html'
         },
         port: 3000,
         notify: false
@@ -49,7 +50,7 @@ function BuildJs() {
         .pipe(gulp.dest(`${distDir}/js/`))
         .pipe(browserSync.stream())
 }
-function LoadXML(){
+function LoadXML() {
     return gulp.src(`${srcDir}/*.xml`)
         .pipe(gulp.dest(`${distDir}/`))
 }
@@ -64,8 +65,8 @@ function CleanDist() {
 // your tasks
 gulp.task('clear', CleanDist)
 // define complex tasks && export
-const build = gulp.series(CleanDist, gulp.parallel(BuildPug, BuildScss, BuildJs,LoadXML))
-const watch = gulp.parallel(build, WatchFiles, ReloadBrowser)
+const build = gulp.series(CleanDist, BuildPug, BuildScss, LoadXML, BuildJs)
+const watch = gulp.series(build, gulp.parallel(ReloadBrowser, WatchFiles))
 exports.html = BuildPug
 exports.css = BuildScss
 exports.js = BuildJs
