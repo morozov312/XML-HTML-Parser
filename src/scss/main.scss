@@ -19,7 +19,7 @@ $border-type: 1px solid #dadada;
     }
     &__body {
         .row:hover {
-            background-color: #fff7f7ce;
+            background-color: #d4e6f13f;
         }
     }
     &__value {
@@ -33,7 +33,7 @@ $border-type: 1px solid #dadada;
     }
     .cell {
         width: 15%;
-        padding: 2%;
+        padding: 1.5%;
         box-sizing: border-box;
         border-right: $border-type;
         &_center {

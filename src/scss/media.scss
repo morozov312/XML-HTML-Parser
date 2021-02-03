@@ -24,7 +24,12 @@
     .footer__buttons {
         width: 40%;
     }
-    .results__table{
-        margin-top: 7%;
+    .results {
+        &__table {
+            margin-top: 7%;
+        }
+        .cell {
+            padding: 4%;
+        }
     }
 }
