@@ -1,5 +1,3 @@
-'use strict'
-
 import { Select, Faculty, Course, Group, Student } from './selectInstances'
 
 class View {

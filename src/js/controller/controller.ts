@@ -1,4 +1,3 @@
-'use strict'
 import Model from '../model/model'
 import View from '../view/view'
 
@@ -14,7 +13,7 @@ class Controller {
             let xmlData: Element = await this.model.getXML('../universityBase.xml')
             this.view.renderAll(xmlData)
         } catch (err) {
-            console.log(`Error, error status - ${err}`)
+            console.error(`Error, error status - ${err}`)
         }
     }
 }
