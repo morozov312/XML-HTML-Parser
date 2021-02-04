@@ -4,10 +4,10 @@ import SlimSelect from 'slim-select'
  * @class
  */
 class SelectFactory {
-    select: string
-    placeholder: string
-    showSearch: boolean
-    hideSelectedOption: boolean
+    public select: string
+    public placeholder: string
+    public showSearch: boolean
+    public hideSelectedOption: boolean
     create(id: string): SlimSelect {
         this.select = `#${id}`
         this.placeholder = `Choose a ${id}`

@@ -7,7 +7,7 @@ describe('Testing Model functions', () => {
         const falsePath: string = './base.xml'
         try {
             let xmlData = await model.getXML(falsePath)
-            expect(xmlData).toThrowError()
+            expect(xmlData).toThrow()
         } catch (e) {
             console.log(e.message)
         }

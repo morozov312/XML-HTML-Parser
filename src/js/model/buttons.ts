@@ -10,7 +10,12 @@ export abstract class Button {
         this.buttonElement = document.querySelector(`#${buttonId}`)
     }
     public startListener(): void {
-        this.buttonElement?.addEventListener('click', this.clickCallback)
+        const btn: Element = this.buttonElement
+        if (btn) {
+            btn.addEventListener('click', this.clickCallback)
+        } else {
+            throw new Error('Button is not defined')
+        }
     }
 }
 

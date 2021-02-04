@@ -31,6 +31,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.12.13",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
+    "@testing-library/jest-dom": "^5.11.9",
     "@types/jest": "^26.0.20",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-regenerator": "^6.26.0",

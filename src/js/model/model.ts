@@ -8,8 +8,12 @@ import { DoneBtn, CancelBtn } from './buttons'
 class Model {
     // public methods:
     constructor() {
-        new DoneBtn('done-btn').startListener()
-        new CancelBtn('cancel-btn').startListener()
+        try {
+            new DoneBtn('done-btn').startListener()
+            new CancelBtn('cancel-btn').startListener()
+        } catch (error) {
+            console.error(error.message);
+        }
     }
     /**
      * Get data from XML using XHR
