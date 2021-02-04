@@ -10,7 +10,7 @@ export abstract class Button {
         this.buttonElement = document.querySelector(`#${buttonId}`)
     }
     public startListener(): void {
-        this.buttonElement.addEventListener('click', this.clickCallback)
+        this.buttonElement?.addEventListener('click', this.clickCallback)
     }
 }
 
