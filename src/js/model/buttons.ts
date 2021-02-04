@@ -12,7 +12,7 @@ export abstract class Button {
     public startListener(): void {
         this.buttonElement.addEventListener('click', this.clickCallback)
     }
-};
+}
 
 export class DoneBtn extends Button {
     // private methods:
@@ -46,7 +46,7 @@ export class DoneBtn extends Button {
             console.error(error.message);
         }
     }
-};
+}
 
 export class CancelBtn extends Button {
     // public methods:
