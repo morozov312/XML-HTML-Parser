@@ -1,12 +1,22 @@
 import SlimSelect from 'slim-select'
 import SelectFactory from './selectFactory'
-
+/**
+ * Interface contains information about a XML node
+ * @property {string} option.text - Information attribute text
+ * @property {string} option.value - Information attribute value
+ * @property {string} option.textContent - XML document node content
+ * @interface
+ */
 interface option {
     text: string,
     value: string,
     textContent: string
 }
-
+/**
+ * Contains settings for create Select object
+ * @property {boolean} selectConfig.needInitialLoad - If need initial parsing all elements of a this class
+ * @interface
+ */
 interface selectConfig {
     id: string,
     infoAttribute: string,
@@ -24,8 +34,15 @@ export abstract class Select {
     private finallyLoadTarget: string = '.results__body'
     private resultField: string = '.results__value'
     // private static methods
+    /**
+     * function searche in array values with received attribute and create array of options from them
+     * @param nodeArr - Array of HTML elements
+     * @param attributeName - Name of attribute to find in the array of elements
+     * @returns option array
+     * @static
+     */
     private static createOptionArray(nodeArr: HTMLCollection, attributeName: string): option[] {
-        let res: option[] = []
+        const res: option[] = []
         for (let i: number = 0; i < nodeArr.length; i++) {
             let attributeText = nodeArr[i].getAttribute(attributeName)
             res.push({
@@ -36,6 +53,11 @@ export abstract class Select {
         }
         return res
     }
+    /**
+     * @param select - object into which to write array of options
+     * @param optionArr - array of options that will be written to Select option
+     * @static
+     */
     private static fillSelect(select: Select, optionArr: option[]): void {
         optionArr.forEach(i => {
             select.selectList.addData(i)
@@ -46,7 +68,7 @@ export abstract class Select {
         return document.querySelector(`#${this.id}`)
     }
     private getInfo(xmlData: Element, attributeName: string): option[] {
-        let nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
+        const nodeArr: HTMLCollection = xmlData.getElementsByTagName(this.id)
         return Select.createOptionArray(nodeArr, attributeName)
     }
     private clearTable(): void {
@@ -57,7 +79,7 @@ export abstract class Select {
         selectArray
             .slice(currIndex + 1, selectArray.length)
             .forEach(i => {
-                let childOptions: Element = i.getOriginalSelect()
+                const childOptions: Element = i.getOriginalSelect()
                 while (childOptions.children.length != 1) {
                     childOptions.lastChild.remove()
                 }
@@ -81,7 +103,7 @@ export abstract class Select {
         return Select.createOptionArray(currElement.children, selectArray[currIndex].childAttribute)
     }
     private fillTableRow(subjectName: string, subjectIndex: number, value: number): string {
-        let accesAtributes = ['disabled', 'disabled', 'disabled']
+        const accesAtributes = ['disabled', 'disabled', 'disabled']
         accesAtributes[value] = 'checked'
         return `<div class="row">
                     <div class="cell">${subjectName} </div>
@@ -92,14 +114,14 @@ export abstract class Select {
     }
     private finallyLoad(optionArr: option[]) {
         this.clearTable()
-        let target: Element = document.querySelector(this.finallyLoadTarget)
+        const target: Element = document.querySelector(this.finallyLoadTarget)
         optionArr.forEach((i, index) => {
             let rowText = this.fillTableRow(i.text, index, Number(i.textContent))
             target.insertAdjacentHTML('beforeend', rowText)
         })
     }
     private fillChildSelect(xmlData: Element, currIndex: number, selectArray: Select[]): void {
-        let childOptionsArr: option[] = this.getChildren(xmlData, currIndex, selectArray)
+        const childOptionsArr: option[] = this.getChildren(xmlData, currIndex, selectArray)
         if (currIndex + 1 === selectArray.length) {
             this.finallyLoad(childOptionsArr)
         } else {
@@ -108,16 +130,19 @@ export abstract class Select {
     }
     private needOverride(currIndex: number, selectArray: Select[]): boolean {
         for (let i = 0; i < currIndex; i++) {
-            let value: string = selectArray[i].selectList.selected().toString()
+            const value: string = selectArray[i].selectList.selected().toString()
             if (value === 'placeholder') return true
         }
         return false
     }
+    /**
+     * Fill previous select's if they won't filled
+     */
     private override(xmlData: Element, currIndex: number, selectArray: Select[]): void {
         if (!this.needOverride(currIndex, selectArray)) return;
-        let selectedValue: string = selectArray[currIndex].selectList.selected().toString()
-        let nodeArr: HTMLCollection = xmlData.getElementsByTagName(selectArray[currIndex].id)
-        let arrayOfElements: Element[] = []
+        const selectedValue: string = selectArray[currIndex].selectList.selected().toString()
+        const nodeArr: HTMLCollection = xmlData.getElementsByTagName(selectArray[currIndex].id)
+        const arrayOfElements: Element[] = []
         for (let i: number = 0; i < nodeArr.length; i++) {
             if (nodeArr[i].getAttribute(this.infoAttribute) === selectedValue) {
                 arrayOfElements.push(nodeArr[i])

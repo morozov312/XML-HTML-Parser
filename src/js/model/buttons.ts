@@ -17,7 +17,7 @@ export abstract class Button {
 export class DoneBtn extends Button {
     // private methods:
     private getInputArray(): NodeListOf<Element> {
-        let nodeArr: NodeListOf<Element> = document.querySelectorAll(this.inputClass + '[checked]')
+        const nodeArr: NodeListOf<Element> = document.querySelectorAll(this.inputClass + '[checked]')
         if (nodeArr.length === 0) throw new Error('The results table isn\'t complete! Choose a student from select list')
         return nodeArr
     }
@@ -25,14 +25,22 @@ export class DoneBtn extends Button {
     constructor(id: string) {
         super(id)
     }
+    /**
+     * On click calculates average score and display it on the page
+     * Highlighted green if score is greater than 1 and red if less
+     * @callback
+     */
     public clickCallback = (): void => {
         try {
             let sum: number = 0
-            let inputArr: NodeListOf<Element> = this.getInputArray()
-            inputArr.forEach(i => sum += Number(i.getAttribute('value')))
-            let resultValue: string = (sum / inputArr.length).toFixed(2).replace(/.00/, '')
-            let color: string = Number(resultValue) < 1 ? '#e41749' : '#67a125'
-            let resultString: string = `Average mark <span style="color:${color}">is ${resultValue}<sapn>`
+            const inputArr: NodeListOf<Element> = this.getInputArray()
+            inputArr
+                .forEach(i => sum += Number(i.getAttribute('value')))
+            const resultValue: string = (sum / inputArr.length).toFixed(2).replace(/.00/, '')
+            const redColor: string = '#e41749'
+            const greenColor: string = '#67a125'
+            const resultColor: string = Number(resultValue) < 1 ? redColor : greenColor
+            const resultString: string = `Average mark <span style="color:${resultColor}">is ${resultValue}<sapn>`
             document.querySelector(this.resultField).innerHTML = resultString
         } catch (error) {
             console.error(error.message);

@@ -1,5 +1,8 @@
 import SlimSelect from 'slim-select'
-
+/**
+ * Creates instances of SlimSelect with specified settings
+ * @class
+ */
 class SelectFactory {
     select: string
     placeholder: string
