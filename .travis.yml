@@ -2,7 +2,15 @@ language: node_js
 node_js:
   - "node"
 
-script:
-  - npm i && npm test && npm build
+install:
+  - npm ci
 
+cache:
+  directories:
+    - "$HOME/.npm"
+
+script:
+  - npm test && npm build
+
+os: linux
 dist: xenial
