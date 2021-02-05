@@ -1,6 +1,8 @@
 language: node_js
+node_js:
+  - "node"
 
 script:
   - npm i && npm test && npm build
-  
+
 dist: xenial
