@@ -15,7 +15,7 @@ class Controller {
     }
     async run(): Promise<void> {
         try {
-            const xmlData: Element = await this.model.getXML('../universityBase.xml')
+            const xmlData: Element = await this.model.getXML('./universityBase.xml')
             this.view.renderAll(xmlData)
         } catch (err) {
             console.error(`Error, error status - ${err}`)
