@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.min.css">
+    <title>XML parser</title>
+  </head>
+  <body>
+    <header class="header">
+      <form class="select-list">
+        <label for="faculty">Faculty:
+          <select id="faculty">
+            <option data-placeholder="true" value="placeholder"></option>
+          </select>
+        </label>
+        <label for="course">Course:
+          <select id="course">
+            <option data-placeholder="true" value="placeholder"></option>
+          </select>
+        </label>
+        <label for="group">Group:
+          <select id="group">
+            <option data-placeholder="true" value="placeholder"></option>
+          </select>
+        </label>
+        <label for="student">Student:
+          <select id="student">
+            <option data-placeholder="true" value="placeholder"></option>
+          </select>
+        </label>
+      </form>
+    </header>
+    <main class="results">
+      <div class="results__table">
+        <div class="results__head">
+          <div class="row">
+            <div class="cell">Subject</div>
+            <div class="cell cell_center">0</div>
+            <div class="cell cell_center">1</div>
+            <div class="cell cell_center">2</div>
+          </div>
+        </div>
+        <div class="results__body"></div>
+      </div>
+      <div class="results__value"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer__buttons">
+        <button class="btn" id="cancel-btn">Cancel </button>
+        <button class="btn" id="done-btn">Done</button>
+      </div>
+    </footer>
+    <script src="./js/index.bundle.js"></script>
+  </body>
+</html>
