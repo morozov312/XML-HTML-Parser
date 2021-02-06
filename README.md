@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/morozov312/XML-HTML-Parser.svg?branch=main)](https://travis-ci.com/github/morozov312/XML-HTML-Parser)
 # About repository
 This project developed in order to apply all my theoretical knowledge on frontend development in practice.
-# Technologies used
+# Tools
 ## HTML and CSS
 ***Pug*** - for HTML development. ***SASS preprocessor*** - for CSS development, styles code developed using BEM methodology.  
 Also completed adaptive and fluid development using media queries.

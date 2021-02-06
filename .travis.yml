@@ -10,7 +10,7 @@ cache:
     - "$HOME/.npm"
 
 script:
-  - npm test && npm build
+  - npm test && gulp build
 
 os: linux
 dist: xenial

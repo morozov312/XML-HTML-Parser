@@ -1,6 +1,6 @@
-require("babel-polyfill")
+require('babel-polyfill')
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         index: ['babel-polyfill', './src/js/index.ts']
     },
