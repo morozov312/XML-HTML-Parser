@@ -38,7 +38,7 @@
             <group id="AVT-001">
                 <student initials="Romanov Roman">
                     <subject name="Programming">1</subject>
-                    <subject name="Legal">1</subject>
+                    <subject name="Art and Design">1</subject>
                     <subject name="History">1</subject>
                     <subject name="Physics">1</subject>
                     <subject name="Linear Algebra and Geometry">1</subject>
@@ -50,7 +50,7 @@
             <group id="AVT-333">
                 <student initials="Pavlov Pavel">
                     <subject name="Programming">2</subject>
-                    <subject name="Legal">1</subject>
+                    <subject name="Art and Design">1</subject>
                     <subject name="History">1</subject>
                     <subject name="Physics">2</subject>
                     <subject name="Linear Algebra and Geometry">1</subject>
@@ -65,13 +65,13 @@
         <course number="3">
             <group id="IP-817">
                 <student initials="Ivanov Ivan">
-                    <subject name="Metrology">2</subject>
-                    <subject name="OOP">2</subject>
-                    <subject name="Computing Systems Architecture">2</subject>
+                    <subject name="Metrology">0</subject>
+                    <subject name="OOP">0</subject>
+                    <subject name="Computing Systems Architecture">0</subject>
                     <subject name="Queuing Theory">2</subject>
-                    <subject name="Economy">2</subject>
-                    <subject name="Databases">2</subject>
-                    <subject name="Physical Education">2</subject>
+                    <subject name="Economy">1</subject>
+                    <subject name="Databases">0</subject>
+                    <subject name="Physical Education">0</subject>
                 </student>
                 <student initials="Prokhorov Prokhor">
                     <subject name="Metrology">1</subject>
