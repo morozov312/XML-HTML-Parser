@@ -15,11 +15,11 @@ Some parts of code have documented comments according to the ***JSDocs standard*
 ## Build
 To buid Pug and SCSS used ***Gulp***, to compail TypeScript used ***Webpack***, to create code that supports ES5 and for the correct work of Jest used ***Babel***.  
 To install the application use:  
-*$ git clone https://github.com/morozov312/XML-HTML-Parser && npm i*  
+#### `$ git clone https://github.com/morozov312/XML-HTML-Parser && npm i`  
 To run tests:  
-*$ npm test*  
+#### `$ npm test`  
 To build:  
-*$ npm build*  
+#### `$ npm build`  
 # Example
 <p align="center"> 
 <img src="./example.gif" alt="example">
